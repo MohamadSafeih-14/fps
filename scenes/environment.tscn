@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf6kses7yjcc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4st5"]
+size = Vector3(10.0122, 0.492676, 10.0408)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mu4p"]
+albedo_color = Color(0.288871, 0.436852, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_imvbv"]
+material = SubResource("StandardMaterial3D_4mu4p")
+size = Vector2(10, 10)
+
+[node name="Environment" type="Node3D"]
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.246614, -1.81427)
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72734, 0.246614, -1.81427)
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383604, -0.422006, 0.491461)
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9652, -0.30952, 0.491461)
+use_collision = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00317383, -0.253662, -0.0394287)
+shape = SubResource("BoxShape3D_y4st5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_imvbv")
